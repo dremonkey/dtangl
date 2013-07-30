@@ -1,0 +1,8 @@
+# System Files
+.DS_Store
+
+# Editor Files
+*.sublime*
+
+# Generated Files
+.tmp/*

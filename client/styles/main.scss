@@ -1,0 +1,21 @@
+@import "bootstrap-sass/lib/bootstrap";
+
+body {
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+}
+
+#coming-soon {
+  overflow: hidden;
+  height: 100%;
+  
+  h1 {
+    position: fixed;
+    left: 20px;
+    color: white;
+    font-weight: 200;
+    top: 20px;
+    margin: 0px;
+  }
+}
