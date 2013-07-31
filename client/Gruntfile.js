@@ -49,6 +49,9 @@ module.exports = function (grunt) {
    * Register all Grunt Tasks
    */
 
+  // For Heroku - task format is 'heroku:env' where env is the NODE_ENV variable
+  grunt.registerTask('heroku:production', 'dist');
+
   // Run 'grunt dev' for live-reloading development environment
   grunt.registerTask('dev', ['build:dev', 'concurrent:dev', 'watch']);
 
