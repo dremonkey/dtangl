@@ -1,7 +1,5 @@
 'use strict';
 
-var path = require('path');
-
 var liveReloadPort = 35729;
 
 /** 
@@ -12,33 +10,32 @@ var paths = {
   
   // Client Directory and Paths
   client: {
-    tld: __dirname, // directory path to top level
+    tld: __dirname + '/src', // directory path to top level
     dirs: {
-      images: '<%= paths.client.tld %>/app/images',
-      styles: '<%= paths.client.tld %>/styles',
-      fonts: '<%= paths.client.tld %>/styles',
+      images: '<%= paths.client.tld %>/assets/images',
+      styles: '<%= paths.client.tld %>/assets/styles',
+      fonts: '<%= paths.client.tld %>/assets/fonts',
     },
     files: {
-      index: '<%= paths.client.tld %>/app/index.html',
+      index: '<%= paths.client.tld %>/index.html',
       scripts: ['<%= paths.client.tld %>/app/**/*.js'],
-      templates: ['<%= paths.client.tld %>/app/**/*.tpl.html'] // angular templates 
+      templates: ['<%= paths.client.tld %>/app/**/*.tpl.html'], // angular templates
     }
   },
 
   // Compiled Assets Directory
   compiled: {
-    tld: path.resolve(__dirname, '../.tmp') // directory path to top level
+    tld: __dirname + '/src/.tmp' // directory path to top level
   },
 
   // Distribution Directory and Paths
   dist: {
-    tld: path.resolve(__dirname, '../dist'), // directory path to top level
+    tld: __dirname + '/dist', // directory path to top level
     dirs: {
       images: '<%= paths.dist.tld %>/images',
       scripts: '<%= paths.dist.tld %>/scripts',
       styles: '<%= paths.dist.tld %>/styles',
-      fonts: '<%= paths.dist.tld %>/styles/fonts',
-      templates: '<%= paths.dist.tld %>/templates'
+      fonts: '<%= paths.dist.tld %>/fonts'
     }
   }
 };
@@ -136,8 +133,7 @@ module.exports = function (grunt) {
       all: [
         'Gruntfile.js',
         '<%= paths.client.files.scripts %>',
-        '!<%= paths.client.tld %>/app/security/**/*', // temp
-        '!<%= paths.client.tld %>/app/bower_components/**/*'
+        '!<%= paths.client.tld %>/bower_components/**/*'
       ]
     },
 
@@ -228,14 +224,15 @@ module.exports = function (grunt) {
     copy: {
 
       // Copy app images from app -> dist
-      images: {
-        files: [{
-          expand: true,
-          cwd: '<%= paths.client.tld %>',
-          src: 'images/{,*/}*.{png,jpg,gif,webp,svg}',
-          dest: '<%= paths.dist.dirs.images %>'
-        }]
-      },
+      // images: {
+      //   files: [{
+      //     expand: true,
+      //     cwd: '<%= paths.client.tld %>',
+      //     // src: 'images/{,*/}*.{png,jpg,gif,webp,svg}',
+      //     src: 'assets/images/**/*.{png,jpg,gif,webp,svg}',
+      //     dest: '<%= paths.dist.dirs.images %>'
+      //   }]
+      // },
 
       // Copy generated images from compiled -> dist
       generated: {
@@ -251,7 +248,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= paths.client.tld %>',
-          src: 'styles/fonts/*',
+          src: 'assets/fonts/*',
           dest: '<%= paths.dist.dirs.fonts %>'
         }]
       },
