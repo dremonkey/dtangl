@@ -1,3 +1,6 @@
+# Heroku Distribution Directory
+_heroku/*
+
 # System Files
 .DS_Store
 
