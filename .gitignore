@@ -4,5 +4,5 @@
 # Editor Files
 *.sublime*
 
-# Foreman Config
-.env
+# Ignore Config Files
+*.env
