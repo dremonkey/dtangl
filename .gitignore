@@ -3,3 +3,6 @@
 
 # Editor Files
 *.sublime*
+
+# Foreman Config
+.env
