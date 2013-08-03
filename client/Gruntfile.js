@@ -1,6 +1,8 @@
 'use strict';
 
-var liveReloadPort = 35729;
+var
+  path = require('path'),
+  liveReloadPort = 35729;
 
 /** 
  * Directory and File Path Configuration
@@ -37,6 +39,13 @@ var paths = {
       styles: '<%= paths.dist.tld %>/styles',
       fonts: '<%= paths.dist.tld %>/fonts'
     }
+  },
+
+  heroku: {
+    tld: path.normalize(__dirname + '../../_heroku'),
+    dirs: {
+      client: '<%= paths.heroku.tld %>/client'
+    }
   }
 };
 
@@ -54,6 +63,9 @@ module.exports = function (grunt) {
 
   // Run 'grunt dist' to build and run the distribution environment
   grunt.registerTask('dist', ['build:dist', 'concurrent:dist', 'optimize']);
+
+  // Run 'grunt heroku' to prepare the client files for deployment to heroku
+  grunt.registerTask('heroku', ['dist', 'clean:heroku', 'copy:heroku']);
 
   // Clean, validate & compile web-accessible resources
   grunt.registerTask('build:dev', ['clean:dev', 'jshint', 'ngtemplates:dev']);
@@ -91,6 +103,12 @@ module.exports = function (grunt) {
             '<%= paths.dist.tld %>/*',
             '!<%= paths.dist.tld %>/.git*'
           ]
+        }]
+      },
+      heroku: {
+        files: [{
+          dot: true,
+          src: '<%= paths.heroku.dirs.client %>'
         }]
       },
       ngtemplates: '<%= paths.compiled.tld %>/scripts/*.templates.js'
@@ -260,6 +278,16 @@ module.exports = function (grunt) {
           cwd: '<%= paths.client.tld %>',
           src: ['.htaccess', '*.{ico,png,txt}'],
           dest: '<%= paths.dist.tld %>'
+        }]
+      },
+
+      // copy client/dist directory to heroku/client
+      heroku: {
+        files: [{
+          expand: true,
+          cwd: '<%= paths.dist.tld %>',
+          src: ['**/*'],
+          dest: '<%= paths.heroku.dirs.client %>'
         }]
       }
     },
