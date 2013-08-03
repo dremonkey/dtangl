@@ -1,3 +1,5 @@
+# Work in Progress...
+
 # Heroku Deployment
 The philosophy behind the deployment strategy outlined here is to avoid committing compiled files to the repository unnecessarily in order to keep the repository clean. Furthermore, I wanted to run all my tests and package the source up before pushing it out.
 
