@@ -19,7 +19,7 @@ NODE_ENV = 'production'
 Run the deploy.sh script in the bin directory.
 
 ```
-cd bin; ./deploy.sh
+./deploy.sh
 ```
 
 This script runs all the tests and grunt tasks to nicely package up the necessary client and server files that will be needed for the site and puts them into the _heroku directory you just created. Once all the necessary files have been packaged up, it does a git commit and pushes the files to Heroku. 
