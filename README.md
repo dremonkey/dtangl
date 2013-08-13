@@ -18,6 +18,8 @@ In your new Heroku app, set the NODE_ENV environment variable to 'production'
 NODE_ENV = 'production'
 ```
 
+The only thing the deploy.sh script does not take care of is the package.json file, so make sure that all necessary modules are listed in the file before running deploy.sh. This is in my list of things to fix.
+
 Run the deploy.sh script in the bin directory.
 
 ```
