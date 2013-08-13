@@ -1,0 +1,104 @@
+<div class="infographic clever">
+<div ng-controller="D3SimpleDataCtrl">
+
+  <section id="intro"
+    data-0="height:1000px; top:0px" 
+    data-500="height:0px">
+    <div class="content-block">
+      <h1 class="title">Meet Your District</h1>
+      <p class="content">"Meet Your District" was a fun little project of mine to merge some of the frameworks and libraries that I have been playing with or meaning to play with into a complete site. It utilizes NodeJS and ExpressJS on the backend, AngularJS on the frontend, D3JS to draw the charts, and Skrollr to produce the nifty parallax scrolling. The data used to generate the charts below was courtesy of the Clever API.</p>
+    </div>
+  </section>
+  
+  <section id="district-schools"
+    data-0="height:0px; top:1000px" 
+    data-500="top:0px; height:1000px"
+    data-1000="height:0px">
+    
+      <div class="legend"
+        data-750="height:40px"
+        data-1000="height:0px">
+        <div class="container"
+          data-750="opacity:1"
+          data-1000="opacity:0">
+          <div class="row">
+            <div d3-legend class="span12" 
+              data-width="640"
+              data-height="40"
+              data-display="schools" 
+              data-layout="horizontal">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="span12 chart-wrapper">
+            <div class="left" d3-pie
+              data-display="studentsInSchools"
+              data-desc="Students"
+              data-chart-width="200" data-chart-height="200">
+            </div>
+            <div class="right" d3-pie
+              data-display="sectionsInSchools"
+              data-desc="Sections"
+              data-chart-width="200" data-chart-height="200">
+            </div>
+            <div class="middle" d3-pie
+              data-display="teachersInSchools"
+              data-desc="Teachers"
+              data-chart-width="200" data-chart-height="200">
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </section>
+
+  <section id="district-sections"
+    data-500="height:0px; top:1000px" 
+    data-1000="top:0px; height:1000px;"
+    data-1500="height:0px">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <h2 class="section-title">Average Student Teacher Ratio by School</h2>
+          <div class="chart-wrapper">
+            <div d3-box 
+              data-display="averageSectionSize"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="district-students"
+    data-1000="height:0px; top:1000px" 
+    data-1500="top:0px; height:1000px;">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <h2 class="section-title">The Students</h2>
+        </div>
+        <div class="chart-wrapper">
+          <div class="span6 left">
+            <div d3-bar 
+              data-width="440"
+              data-anchor="left"
+              data-display="studentFirstNames"></div>
+          </div>
+          <div class="span6 right">
+            <div d3-bar 
+              data-width="440"
+              data-anchor="right"
+              data-display="studentLastNames">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</div>
+</div>

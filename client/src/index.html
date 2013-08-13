@@ -35,21 +35,47 @@
       <script src="json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <div id="coming-soon">
+    <!-- <div id="coming-soon">
       <h1>The soon to be online home of Andre Deutmeyer</h1>
       <img src="images/sf.jpg"/>
-    </div>
-    <div class="container">
-      <!-- AngularJS Content -->
-      <div ng-view=""></div>
-    </div>
+    </div> -->
+
+    <div class="infographic clever">
+    
+    <!-- AngularJS Content -->
+    <div ui-view></div>
 
     <!-- build:js scripts/app.components.js -->
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/skrollr/src/skrollr.js"></script>
     <!-- endbuild -->
 
     <!-- build:js scripts/app.concat.js -->
     <script src="app/app.js"></script>
+
+    <!-- common module -->
+    <script src="app/common/common.js"></script>
+    <script src="app/common/services/utils.srv.js"></script>
+
+    <!-- home module -->
+    <script src="app/home/home.js"></script>
+    <script src="app/home/controllers/home.ctrl.js"></script>
+
+    <!-- d3js module -->
+    <script src="app/d3/d3.js"></script>
+    <script src="app/d3/controllers/data.ctrl.js"></script>
+    <script src="app/d3/directives/bar.dir.js"></script>
+    <script src="app/d3/directives/box.dir.js"></script>
+    <script src="app/d3/directives/legend.dir.js"></script>
+    <script src="app/d3/directives/pie.dir.js"></script>
+    <script src="app/d3/directives/sunburst.dir.js"></script>
+    <script src="app/d3/directives/tree.dir.js"></script>
+    <script src="app/d3/services/data.srv.js"></script>
+
     <!-- endbuild -->
 
     <!-- build:js(dist) scripts/app.templates.js -->
@@ -62,7 +88,6 @@
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
       ga('create', 'UA-42892769-1', 'dtangl.com');
       ga('send', 'pageview');
     </script>

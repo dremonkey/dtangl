@@ -25,6 +25,11 @@ var paths = {
     }
   },
 
+  // Server Directory
+  srv: {
+    tld: path.normalize(__dirname + '../../server')
+  },
+
   // Compiled Assets Directory
   compiled: {
     tld: __dirname + '/src/.tmp' // directory path to top level
@@ -130,7 +135,10 @@ module.exports = function (grunt) {
           '<%= paths.client.files.scripts %>', // client side scripts
           '<%= paths.client.dirs.images %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= paths.compiled.tld %>/scripts/{,*/}*.js', // compiled scripts
-          '<%= paths.compiled.tld %>/styles/{,*/}*.css' // compiled styles
+          '<%= paths.compiled.tld %>/styles/{,*/}*.css', // compiled styles
+
+          // TODO figure out how to move this into the server directory and combine watch tasks
+          // '<%= paths.srv.tld %>/api/**/*.js' // server files
         ]
       },
 
