@@ -49,6 +49,7 @@ select env in "Heroku" "Other"; do
           echo "Deploying to Heroku"
           cd "$tld/_heroku"
           (exec git add .)
+          (exec git add -u .)
           (exec git commit)
           (exec git push heroku master) 
         break;;
