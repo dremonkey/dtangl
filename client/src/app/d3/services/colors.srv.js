@@ -20,7 +20,7 @@ angular.module('d3.services.color', [])
       }
 
       return d3.scale.ordinal().range(_groups[type]);
-    }
+    };
 
     return colors;
   });

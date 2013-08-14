@@ -116,6 +116,15 @@ $bg4: $tan;
     }
 
     svg {
+      overflow: hidden;
+      margin: 0 auto;
+      display: block;
+      max-width: 100%;
+
+      & > g {
+        float: left;
+      }
+
       text.ratio {
         fill: $bg3 !important;
       }

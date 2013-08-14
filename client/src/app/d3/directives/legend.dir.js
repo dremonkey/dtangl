@@ -22,7 +22,7 @@ angular.module('d3.directives.legend', ['common.utils', 'd3.services.color'])
           svg = null; // container
 
         var
-          loadingColors = d3Color.getRange(opts.loadingColors),
+          // loadingColors = d3Color.getRange(opts.loadingColors),
           colorscale = d3Color.getRange(opts.colors);
 
         // Retrieve the data

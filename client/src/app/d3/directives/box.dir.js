@@ -29,12 +29,12 @@ angular.module('d3.directives.box', ['common.utils', 'd3.services.color'])
           scale = null; // scaling function
 
         var
-          loadingColors = d3Color.getRange(opts.loadingColors),
+          // loadingColors = d3Color.getRange(opts.loadingColors),
           colorscale = d3Color.getRange(opts.chartColors);
 
         // Add the container, set the width, height, and add the svg group
-        svg = d3.select(element[0]).append('svg')
-          .attr('height', opts.len + 30);
+        svg = d3.select(element[0]).append('svg');
+          // .attr('height', opts.len + 30);
 
         // Retrieve the data
         scope.getData(attrs.display);
@@ -57,12 +57,16 @@ angular.module('d3.directives.box', ['common.utils', 'd3.services.color'])
 
           var groups, group;
 
+          // Used to scale the size of the inner-box to make the ratio difference more visible
           scale = d3.scale.linear()
             .domain([
               d3.min(data, function (d) { return d.sections.average; }),
               d3.max(data, function (d) { return d.sections.average; })
             ])
             .range([1,4]);
+
+          svg.attr('style', 'width:'+ (data.length*(opts.len+10)) + 'px');
+          console.log(data.length*(opts.len+10));
 
           // add a new group for each item
           groups = svg.selectAll('g').data(data);
@@ -90,7 +94,7 @@ angular.module('d3.directives.box', ['common.utils', 'd3.services.color'])
             .attr('height', function (d) {
               return dimen(d, opts.len);
             })
-            .attr('fill', colorscale(1));;
+            .attr('fill', colorscale(1));
 
           group.append('text')
             .attr('class', 'ratio')
