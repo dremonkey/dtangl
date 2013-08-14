@@ -6,7 +6,7 @@ angular.module('d3', ['d3.controllers', 'd3.directives']);
 angular.module('d3.controllers', ['d3.controllers.data']);
 
 // All d3 services
-angular.module('d3.services', ['d3.services.data']);
+angular.module('d3.services', ['d3.services.data', 'd3.services.color']);
 
 // All d3 directives
 angular.module('d3.directives', [

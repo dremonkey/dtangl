@@ -7,14 +7,16 @@
  * smaller box to the area of the larger box is the same as specified x:y ratio.
  */
 
-angular.module('d3.directives.box', ['common.utils'])
-  .directive('d3Box', function (_) {
+angular.module('d3.directives.box', ['common.utils', 'd3.services.color'])
+  .directive('d3Box', function (_, d3Color) {
 
     // default pie chart options
     var defaults = {
       dur: 2500,
       len: 225,
-      desc: 'default description'
+      desc: 'default description',
+      loadingColors: 'grayLight',
+      chartColors: 'blueGray'
     };
 
     var directiveDefObj = {
@@ -24,7 +26,11 @@ angular.module('d3.directives.box', ['common.utils'])
         var
           opts = _.merge(defaults, attrs), // merge attributes with defaults
           svg = null, // container
-          scale = null; // scaling function 
+          scale = null; // scaling function
+
+        var
+          loadingColors = d3Color.getRange(opts.loadingColors),
+          colorscale = d3Color.getRange(opts.chartColors);
 
         // Add the container, set the width, height, and add the svg group
         svg = d3.select(element[0]).append('svg')
@@ -71,7 +77,7 @@ angular.module('d3.directives.box', ['common.utils'])
             .attr('class', 'b1')
             .attr('width', opts.len)
             .attr('height', opts.len)
-            .attr('fill', '#f5f5f5');
+            .attr('fill', colorscale(0));
 
           group.append('rect')
             .attr('class', 'b2')
@@ -83,7 +89,8 @@ angular.module('d3.directives.box', ['common.utils'])
             })
             .attr('height', function (d) {
               return dimen(d, opts.len);
-            });
+            })
+            .attr('fill', colorscale(1));;
 
           group.append('text')
             .attr('class', 'ratio')
@@ -93,7 +100,6 @@ angular.module('d3.directives.box', ['common.utils'])
             .attr('x', opts.len)
             .attr('dx', -7) // padding-right
             .attr('font-size', 32)
-            .attr('color', '#999')
             .text(function (d) { return d.ratio; });
 
           group.append('text')

@@ -1,19 +1,18 @@
 'use strict';
 
-angular.module('d3.directives.pie', ['common.utils'])
-  .directive('d3Pie', function (_) {
+angular.module('d3.directives.pie', ['common.utils', 'd3.services.color'])
+  .directive('d3Pie', function (_, d3Color) {
     
     // default pie chart options
     var defaults = {
       dur: 2500,
       chartWidth: 320,
       chartHeight: 320,
-      desc: 'default description'
+      arcWidth: 20,
+      desc: 'default description',
+      loadingColors: 'grayLight',
+      chartColors: 'blueGray'
     };
-
-    var
-      grayscale = d3.scale.ordinal().range(['#f5f5f5','#e5e5e5', '#d5d5d5', '#c5c5c5']),
-      color = d3.scale.ordinal().range(['#98abc5', '#8a89a6', '#7b6888', '#6b486b']);
 
     var directiveDefObj = {
       restrict: 'A',
@@ -25,8 +24,12 @@ angular.module('d3.directives.pie', ['common.utils'])
           opts = _.merge(defaults, attrs), // merge attributes with defaults
           svg = null, // container
           radius = Math.min(opts.chartWidth, opts.chartHeight) / 2,
-          innerRadius = radius - opts.chartWidth/8,
+          innerRadius = radius - opts.arcWidth,
           init = true; // flag to keep track of initialization state
+
+        var
+          loadingColors = d3Color.getRange(opts.loadingColors),
+          colorscale = d3Color.getRange(opts.chartColors);
 
         var arcs;
 
@@ -73,13 +76,15 @@ angular.module('d3.directives.pie', ['common.utils'])
           opts = _.merge(defaults, attrs);
 
           if (init) {
+
+            svg.attr('class', 'loading');
             
             // add the arcs
-            arcs = drawArcs(data);
+            arcs = drawArcs(data, true);
 
             // set the styling of the arcs
             arcs
-              .attr('fill', function (d) { return grayscale(d.data.name); });
+              .attr('fill', function (d) { return loadingColors(d.data.name); });
             
             // save the current arc data for later use to calculate transitions
             arcs.each(function (d) {
@@ -94,6 +99,9 @@ angular.module('d3.directives.pie', ['common.utils'])
             init = false;
           }
           else {
+
+            svg.attr('class', 'loaded');
+
             arcs = drawArcs(data);
 
             arcs
@@ -110,7 +118,7 @@ angular.module('d3.directives.pie', ['common.utils'])
               .attrTween('d', arcTween)
               .style('fill', function (d) {
                 // set fill color depending on name
-                return color(d.data.name);
+                return colorscale(d.data.name);
               });
 
             updateCount(total);
@@ -124,7 +132,10 @@ angular.module('d3.directives.pie', ['common.utils'])
 
           // for all unbound data add new arcs
           arcs.enter().append('path')
-            .attr('class', 'arc')
+            .attr('class', function (d, i) {
+              var name = d.data.name.replace(/[^a-z0-9\-]/gi,'-').toLowerCase();
+              return 'arc arc-' + i + ' ' + name;
+            })
             .attr('d', arc);
 
           return arcs;
@@ -150,8 +161,8 @@ angular.module('d3.directives.pie', ['common.utils'])
             .attr('y', -3)
             .attr('dy', '.35em') // vertical-align: middle
             .attr('text-anchor', 'middle') // text-align: center
-            .attr('font-size', '24')
-            .attr('fill', '#e5e5e5')
+            .attr('font-size', opts.chartWidth / 10)
+            .attr('fill', colorscale(1))
             .text('Loading');
             
           // Add loading text to the label group
@@ -160,16 +171,16 @@ angular.module('d3.directives.pie', ['common.utils'])
             .attr('y', 20)
             .attr('dy', '.35em') // vertical-align: middle
             .attr('text-anchor', 'middle') // text-align: center
-            .attr('fill', '#e5e5e5')
+            .attr('fill', colorscale(1))
             .text(function () { return opts.desc; });
         }
 
 
-        function updateCount (text, color) {
-          color = color || '#e5e5e5';
+        function updateCount (text, textColor) {
+          textColor = textColor || colorscale(1);
           svg.selectAll('text.count')
-            .attr('font-size', 36)
-            .attr('fill', color)
+            .attr('font-size', opts.chartWidth / 8)
+            .attr('fill', textColor)
             .text(text);
         }
 

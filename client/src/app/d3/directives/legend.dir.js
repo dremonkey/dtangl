@@ -1,16 +1,15 @@
 'use strict';
 
-angular.module('d3.directives.legend', ['common.utils'])
-  .directive('d3Legend', function (_) {
+angular.module('d3.directives.legend', ['common.utils', 'd3.services.color'])
+  .directive('d3Legend', function (_, d3Color) {
 
     var defaults = {
       width: 200,
-      height: 150
+      height: 150,
+      loadingColors: 'grayLight',
+      colors: 'blueGray'
     };
-
-    var
-      // grayscale = d3.scale.ordinal().range(['#f5f5f5','#e5e5e5', '#d5d5d5', '#c5c5c5']),
-      color = d3.scale.ordinal().range(['#98abc5', '#8a89a6', '#7b6888', '#6b486b']);
+      
 
     var directiveDefObj = {
       restrict: 'A',
@@ -21,6 +20,10 @@ angular.module('d3.directives.legend', ['common.utils'])
         var
           opts = _.merge(defaults, attrs), // merge attributes with defaults
           svg = null; // container
+
+        var
+          loadingColors = d3Color.getRange(opts.loadingColors),
+          colorscale = d3Color.getRange(opts.colors);
 
         // Retrieve the data
         scope.getData(attrs.display);
@@ -81,7 +84,7 @@ angular.module('d3.directives.legend', ['common.utils'])
             .attr('y', gh/2 - bh/2)
             .attr('fill', function (d) {
               console.log(d);
-              return color(d.name);
+              return colorscale(d.name);
             })
             .attr('class', 'color-box');
 

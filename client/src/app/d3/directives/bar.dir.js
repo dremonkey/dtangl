@@ -6,7 +6,9 @@ angular.module('d3.directives.bar', ['common.utils'])
     var defaults = {
       width: 320,
       barHeight: 20,
-      anchor: 'left'
+      anchor: 'left',
+      loadingColors: 'grayLight',
+      chartColors: 'blueGray'
     };
 
     var directiveDefObj = {

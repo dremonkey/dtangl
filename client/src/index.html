@@ -75,6 +75,7 @@
     <script src="app/d3/directives/sunburst.dir.js"></script>
     <script src="app/d3/directives/tree.dir.js"></script>
     <script src="app/d3/services/data.srv.js"></script>
+    <script src="app/d3/services/colors.srv.js"></script>
 
     <!-- endbuild -->
 
@@ -90,6 +91,20 @@
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-42892769-1', 'dtangl.com');
       ga('send', 'pageview');
+    </script>
+
+    <!-- Webfonts -->
+    <script type="text/javascript">
+    WebFontConfig = {google: { families: [ 'Bevan::latin' ] }};
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })(); 
     </script>
     
   </body>

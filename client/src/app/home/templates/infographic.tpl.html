@@ -6,7 +6,7 @@
     data-500="height:0px">
     <div class="content-block">
       <h1 class="title">Meet Your District</h1>
-      <p class="content">"Meet Your District" was a fun little project of mine to merge some of the frameworks and libraries that I have been playing with or meaning to play with into a complete site. It utilizes NodeJS and ExpressJS on the backend, AngularJS on the frontend, D3JS to draw the charts, and Skrollr to produce the nifty parallax scrolling. The data used to generate the charts below was courtesy of the Clever API.</p>
+      <p class="content">"Meet Your District" was a fun little project to merge some of the frameworks and libraries that I have been playing with or meaning to play with into a complete site. It utilizes NodeJS and ExpressJS on the backend, AngularJS on the frontend, D3JS to draw the charts, and Skrollr to produce the nifty parallax scrolling. The data used to generate the charts below was courtesy of the Clever API.</p>
     </div>
   </section>
   
@@ -26,7 +26,8 @@
               data-width="640"
               data-height="40"
               data-display="schools" 
-              data-layout="horizontal">
+              data-layout="horizontal"
+              data-colors="orgb">
             </div>
           </div>
         </div>
@@ -38,17 +39,24 @@
             <div class="left" d3-pie
               data-display="studentsInSchools"
               data-desc="Students"
-              data-chart-width="200" data-chart-height="200">
+              data-arc-width="5"
+              data-chart-width="300" 
+              data-chart-height="300"
+              data-chart-colors="orgb">
             </div>
             <div class="right" d3-pie
               data-display="sectionsInSchools"
               data-desc="Sections"
-              data-chart-width="200" data-chart-height="200">
+              data-arc-width="5"
+              data-chart-width="300" 
+              data-chart-height="300">
             </div>
             <div class="middle" d3-pie
               data-display="teachersInSchools"
               data-desc="Teachers"
-              data-chart-width="200" data-chart-height="200">
+              data-arc-width="5"
+              data-chart-width="300" 
+              data-chart-height="300">
             </div>
           </div>
         </div>
@@ -66,7 +74,9 @@
           <h2 class="section-title">Average Student Teacher Ratio by School</h2>
           <div class="chart-wrapper">
             <div d3-box 
-              data-display="averageSectionSize"></div>
+              data-chart-colors="torg"
+              data-display="averageSectionSize">
+            </div>
           </div>
         </div>
       </div>

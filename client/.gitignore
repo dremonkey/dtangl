@@ -4,4 +4,4 @@ src/bower_components/*
 
 # Generated Files
 dist/*
-.tmp/*
+src/.tmp/*
