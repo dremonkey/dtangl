@@ -33,8 +33,8 @@ angular.module('d3.directives.box', ['common.utils', 'd3.services.color'])
           colorscale = d3Color.getRange(opts.chartColors);
 
         // Add the container, set the width, height, and add the svg group
-        svg = d3.select(element[0]).append('svg');
-          // .attr('height', opts.len + 30);
+        svg = d3.select(element[0]).append('svg')
+          .attr('height', opts.len + 30);
 
         // Retrieve the data
         scope.getData(attrs.display);
@@ -66,7 +66,6 @@ angular.module('d3.directives.box', ['common.utils', 'd3.services.color'])
             .range([1,4]);
 
           svg.attr('style', 'width:'+ (data.length*(opts.len+10)) + 'px');
-          console.log(data.length*(opts.len+10));
 
           // add a new group for each item
           groups = svg.selectAll('g').data(data);

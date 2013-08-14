@@ -1,4 +1,4 @@
-<div id="skrollr-body" class="infographic clever">
+<div skrollr class="infographic clever">
 <div ng-controller="D3SimpleDataCtrl">
 
   <section id="intro"
@@ -97,12 +97,14 @@
         </div>
         <div class="chart-wrapper">
           <div class="span6 left">
+            <h3 class="fn">First Names</h3>
             <div d3-bar 
               data-width="440"
               data-anchor="left"
               data-display="studentFirstNames"></div>
           </div>
           <div class="span6 right">
+            <h3 class="ln">Last Names</h3>
             <div d3-bar 
               data-width="440"
               data-anchor="right"
