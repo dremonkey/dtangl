@@ -1,0 +1,8 @@
+# System Files
+.DS_Store
+
+# Text Editor Files
+*.sublime*
+
+.nodemonignore
+node_modules/*
