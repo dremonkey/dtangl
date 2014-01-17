@@ -14,6 +14,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <base href="/"></base>
+
     <title>dtangl</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -21,7 +24,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css(dist) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css" data-skrollr-stylesheet>
     <!-- endbuild -->
   </head>
   <body ng-app="app">
@@ -34,13 +37,6 @@
       <script src="es5-shim/es5-shim.js"></script>
       <script src="json3/lib/json3.min.js"></script>
     <![endif]-->
-
-    <!-- <div id="coming-soon">
-      <h1>The soon to be online home of Andre Deutmeyer</h1>
-      <img src="images/sf.jpg"/>
-    </div> -->
-
-    <div class="infographic clever">
     
     <!-- AngularJS Content -->
     <div ui-view></div>
@@ -49,8 +45,10 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/caman/dist/caman.full.pack.js"></script>
     <script src="bower_components/d3/d3.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/skrollr-stylesheets/src/skrollr.stylesheets.js"></script>
     <script src="bower_components/skrollr/src/skrollr.js"></script>
     <!-- endbuild -->
 
@@ -65,6 +63,11 @@
     <!-- home module -->
     <script src="app/home/home.js"></script>
     <script src="app/home/controllers/home.ctrl.js"></script>
+    <script src="app/home/directives/intro.dir.js"></script>
+
+    <!-- portfolio module -->
+    <script src="app/portfolio/portfolio.js"></script>
+    <script src="app/portfolio/directives/portfolio.dir.js"></script>
 
     <!-- d3js module -->
     <script src="app/d3/d3.js"></script>
@@ -77,7 +80,6 @@
     <script src="app/d3/directives/tree.dir.js"></script>
     <script src="app/d3/services/data.srv.js"></script>
     <script src="app/d3/services/colors.srv.js"></script>
-
     <!-- endbuild -->
 
     <!-- build:js(dist) scripts/app.templates.js -->
@@ -96,7 +98,7 @@
 
     <!-- Webfonts -->
     <script type="text/javascript">
-    WebFontConfig = {google: { families: [ 'Bevan::latin' ] }};
+    WebFontConfig = {google: { families: [ 'Bevan::latin', 'Norican::latin', 'Roboto+Slab::latin' ] }};
     (function() {
       var wf = document.createElement('script');
       wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +

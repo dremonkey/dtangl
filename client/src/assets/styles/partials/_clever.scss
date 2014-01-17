@@ -1,0 +1,200 @@
+// Colors
+$tan: #EEE9DD;
+$brown: #635958;
+
+$lime: #99C329;
+
+$grayBlue: #84999E;
+$blueGray: #B9C7D1; // not used
+$turquoise: #49AEB6;
+$sea: #66A5B6;
+
+$lightgray: #E2E4E3;
+
+$orange: #DD9E35;
+$brick: #C33B0E;
+
+
+// Backgrounds
+$bg1: $tan;
+$bg2: $grayBlue;
+$bg3: $sea;
+$bg4: $tan;
+
+#clever {
+
+  #intro,
+  #district-schools,
+  #district-sections,
+  #district-students {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    position: fixed;
+
+    .title {
+      font-size: 48px;
+      text-align: center;
+      color: $lime;
+      font-family: "Bevan";
+      font-weight: normal;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: "Bevan";
+      color: $grayBlue;
+      font-weight: normal;
+    }
+  }
+
+  #intro {
+    background-color: $bg1;
+
+    $width: 600px;
+
+    .content-block {
+      text-align: center;
+      position: absolute;
+      padding: 20px;
+      top: 35%;
+
+      @media (min-width: 767px) {
+        margin-left: -$width / 2;
+        max-width: $width;
+        left: 50%;
+      }
+    }
+    .content {
+      color: $brown;
+    }
+  }
+
+  #district-schools {
+    background-color: $bg2;
+
+    .container {}
+
+    .legend {
+      padding-top: 7px;
+      background-color: darken($grayBlue, 30%);
+      overflow: hidden;
+
+      svg {
+        margin: 0 auto;
+        display: block;
+
+        text {
+          fill: $tan !important;
+        }
+      }
+    }
+
+    .chart-wrapper {
+      position: absolute;
+
+      svg {
+        display: block;
+        margin: 10px auto;
+      }
+
+      svg text {
+        fill: $tan !important;
+      }
+
+      @media (min-width: 960px) {
+        top: 35%;
+
+        .left {float: left}
+        .right {float: right}
+        .middle {
+          width: 300px;
+          margin: 0 auto;
+        }
+      }
+    }
+
+  }
+
+  #district-sections {
+    background-color: $bg3;
+
+    .span12 {
+      position: absolute;
+      top: 25%;
+
+      .section-title {
+        color: darken($grayBlue, 15%);
+      }
+
+      svg {
+        overflow: hidden;
+        margin: 0 auto;
+        display: block;
+        max-width: 100%;
+
+        & > g {
+          float: left;
+        }
+
+        text.ratio {
+          fill: $bg3 !important;
+        }
+
+        text.desc {
+          fill: $tan;
+        }
+      } 
+    }
+
+    .chart-wrapper {}
+  }
+
+  #district-students {
+    background-color: $bg4;
+
+    .section-title {
+      color: $tan;
+      background-color: $brick;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      margin: 0;
+      padding: 10px 0;
+      z-index: 10;
+    }
+
+    .fn, .ln {
+      font-size: 20px;
+      background: $bg4;
+      color: $grayBlue;
+      font-family: "Bevan";
+    }
+
+    .ln {
+      text-align: right;
+    }
+
+    .legend {
+      $width: 230px;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      margin-left: -$width/2;
+      width: $width;
+      font-size: 16px;
+      line-height: 30px;
+
+
+    }
+
+    .chart-wrapper {
+      position: absolute;
+      top: 12%;
+
+      .right svg { float: right; }
+    }
+  }
+
+}

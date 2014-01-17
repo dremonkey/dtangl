@@ -21,6 +21,8 @@
   "globals": {
     "angular": false,
     "d3": false,
-    "skrollr": false
+    "skrollr": false,
+    "skrollrStylesheets": false,
+    "Caman": false
   }
 }

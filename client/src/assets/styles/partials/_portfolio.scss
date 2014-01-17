@@ -1,0 +1,68 @@
+#portfolio {
+  background: white url('../images/noise.gif') repeat 0 0;
+
+  .section-title {
+    text-align: center;
+  }
+
+  ul {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .projects li {
+    $li_h: 150px;
+
+    list-style: none;
+    display: block;
+    text-align: center;
+    height: $li_h;
+    line-height: $li_h;
+    font-size: 20px;
+    margin-top: 20px;
+
+    &.project {
+      // text-transform: uppercase;
+    }
+
+    a {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &.red {
+      background: #c64847;
+
+      a {
+        color: white;
+        
+        // $radius: $li_h * 0.7;
+        // $margin_top: ($li_h - $radius)/2;
+        // height: $radius;
+        // width: $radius;
+        // margin: $margin_top auto 0;
+        // line-height: $radius;
+        // @include border-radius($radius/2);
+      }
+    }
+
+    &.blue {
+      background: #4065a2;
+
+      a {
+        color: white;
+      }
+    }
+
+    &.placeholder {
+      $bg: #e5e5e5;
+      background: $bg;
+      color: lighten($bg, 10%);
+    }
+  }
+}

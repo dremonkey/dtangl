@@ -7,22 +7,15 @@ body {
   color: #444;
 }
 
-#coming-soon {
-  overflow: hidden;
-  height: 100%;
-  
-  h1 {
-    position: fixed;
-    left: 20px;
-    color: white;
-    font-weight: 200;
-    top: 20px;
-    margin: 0px;
-  }
-}
+// Import App Styling
+@import "partials/home";
+@import "partials/clever";
+@import "partials/portfolio";
 
-@import "partials/infographic";
-
+// TODO separate media queries into different compiled stylesheets.
+// This is done to make make screensize specific skrollr actions
+// - import base stylesheets
+// - override base from media specific stylesheets
 @media (max-width: 767px) {
   body {
     padding-left: 0px;
